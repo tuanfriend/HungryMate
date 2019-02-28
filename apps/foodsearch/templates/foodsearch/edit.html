@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <form method="POST" action="/BTeditrecipe">
+            {% csrf_token %}
+            Recipes:<br>
+            Name: <br>
+            <input type="text" name="recipe_name_edit" value="{{recipe.recipename}}"><br>
+            Picture: <br>
+            <input type="text" name="picture" value="{{recipe.picture}}"><br>
+            Short Description:<br>
+            <textarea name="shortdesc" rows="4" cols="50" placeholder="{{recipe.shortdesc}}"></textarea>
+            <br>
+            Description:<br>
+            <textarea name="description" rows="4" cols="50" placeholder="{{recipe.description}}"></textarea>
+            <br><br>
+            <input type="hidden" name="idrecipe" value="{{recipe.id}}">
+            <input type="submit" value="Submit">
+          </form> 
+
+          <form method="POST" action="/BTeditingre">
+            {% csrf_token %}
+            Ingredents Name:<br>
+            <input type="text" name="ingre_name_edit" value="{{ingre.ingre_name}}">
+            <input type="hidden" name="idingre" value="{{ingre.id}}">
+            <br><br>
+            <input type="submit" value="Submit">
+          </form> 
+
+</body>
+</html>

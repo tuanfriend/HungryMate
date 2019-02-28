@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Header</title>
+    <style>
+        li {
+            color: #757575;
+            display: inline-block;
+            font-weight: bold;
+            font-family: sans-serif;
+            margin: 25px;
+            font-size: 88%;
+        }
+
+        #logo {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+        }
+
+        ul {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 20px;
+            margin-left: 70px;
+        }
+
+        #header {
+            /* border-bottom: 1px solid black; */
+            text-align: center;
+        }
+
+        #icon {
+            display: inline-block;
+            margin-left: 300px;
+            vertical-align: top;
+            margin-top: 48px;
+        }
+
+        .login {
+            vertical-align: top;
+            margin-top: 48px;
+            margin-left: 20px;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: sans-serif;
+            color: #757575;
+        }
+
+        #stock_image {
+            height: 415px;
+            background: url("{% static 'foodsearch/images/stock1.jpg' %}");
+            background-size: cover;
+        }
+
+        #search {
+            margin-top: 50px;
+            color: red;
+            display: inline-block;
+        }
+
+        .food_image {
+            border: 1px solid black;
+            width: 400px;
+            height: 220px;
+            display:inline-block;
+            vertical-align: top;
+        }
+        .food_information{
+            display:inline-block;
+            vertical-align:top;
+        }
+    
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="header">
+        <img id="logo" src="{% static 'foodsearch/images/logo.png' %}">
+        <ul id="navigation">
+            <a href="#"><li>Home</li></a>
+            <a href="#"><li>Healthy Receipes</li></a>
+            <a href="#"><li>Gallery</li></a>
+            <a href="#"><li>About</li></a>
+            <a href="#"><li>Contact</li></a>
+        </ul>
+        <i class="fas fa-user" id="icon"></i><a href="#" class="login">| Login</a>
+    </div>
+
+    <!-- image below -->
+    <div id="stock_image"></div>
+
+    <form action="" method="POST">
+        <label id="search">Search More Options:</label>
+        <input type="text" name="searches">
+    </form>
+
+    <div class="content">
+        {% for x in recipes %}
+        <div class="boxes">
+            <!-- left image -->
+            <p class="food_image">{{x.picture}}</p> 
+            <!-- right information -->
+            <div class="food_information">
+                    <h3><a href="/detail/{{x.id}}">{{x.recipename}}</a></h3>
+                <p>{{x.description}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>

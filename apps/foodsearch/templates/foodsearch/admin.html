@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <p>recipes here</p>   
+    {% for x in all_recipes %}
+    {{x.recipename}}
+    {{x.picture}}
+    <a href="/delete_recipe/{{x.id}}">Delete Recipe</a><br>
+    <a href="/edit_recipe/{{x.id}}">Edit Recipe</a><br>
+    {% endfor %}
+    
+
+    <p>ingredients here</p>   
+    {% for y in all_ingredients %}
+    {{y.ingre_name}}
+    <a href="/delete_ingre/{{y.id}}">Delete Ingredient</a><br>
+    <a href="/edit_ingre/{{y.id}}">Edit Ingredient</a><br>
+    {% endfor %}
+
+    <hr>
+    <p>recipes here</p>   
+    {% for x in all_recipes %}
+    {{x.recipename}} || {% for i in all_ingredients%} {{i.recipes.recipename}} {% endfor %}<br>
+    {% endfor %}
+
+</body>
+</html>

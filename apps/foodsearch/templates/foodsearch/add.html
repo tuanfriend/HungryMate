@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <form method="POST" action="/addrecipe" enctype="multipart/form-data">
+            {% csrf_token %}
+            Recipes:<br>
+            Name: <br>
+            <input type="text" name="recipename"><br>
+            Picture: <br>
+            <input type="text" name="pic"><br>
+            Short Descripton:<br>
+            <textarea name="shortdesc" rows="4" cols="50"></textarea>
+            <br>
+            Description:<br>
+            <textarea name="description" rows="4" cols="50"></textarea>
+            <br><br>
+            <input type="submit" value="Submit">
+          </form> 
+
+          <form method="POST" action="/addingre">
+            {% csrf_token %}
+            Ingredents Name:<br>
+            <input type="text" name="ingre_name">
+            <br><br>
+            <input type="submit" value="Submit">
+          </form> 
+<hr>
+<h2>Add recipe and ingredents together</h2>
+<form method="POST" action="/addtogether">
+  {% csrf_token %}
+  <a>Recipes list</a>
+  <select name="recipe-list">
+      {% for x in recipes %}
+    <option value="{{ x.id }}">{{ x.recipename }}</option>
+      {% endfor %}
+  </select><br><br>
+  <a>Ingredents list</a>
+  <select name="ingre-list">
+      {% for y in ingredents %}
+      <option value="{{ y.id }}">{{ y.ingre_name }}</option>
+      {% endfor %}
+    </select>
+  <br><br>
+  <input type="submit">
+</form>
+
+</body>
+</html>
